@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+    <h1>{{ category.name }}</h1>
+
+    <div class="mt-5" >
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Article</th>
+                
+           
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                
+                <td>{{ article.title }}</td>
+                
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}">Consulter</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <a href="{{ path('app_category_index') }}">Retouner à la liste des categories</a>
+
+
+
+
+{% endblock %}
